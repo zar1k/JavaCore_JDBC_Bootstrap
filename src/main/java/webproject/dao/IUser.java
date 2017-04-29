@@ -24,7 +24,7 @@ public interface IUser extends IModel<User> {
      * @param user
      * @return list of MusicTypes
      */
-    List<Model> getMusicTypes(User user);
+    List<Model> getUserMusicTypes(User user);
 
     /**
      * Adds a type of music to the user
@@ -33,4 +33,11 @@ public interface IUser extends IModel<User> {
      * @param musicType
      */
     void addUserMusicTypes(User user, MusicType musicType);
+
+    /**
+     * Delete links to user's music
+     *
+     * @param user
+     */
+    void deleteUserMusicTypes(User user);
 }

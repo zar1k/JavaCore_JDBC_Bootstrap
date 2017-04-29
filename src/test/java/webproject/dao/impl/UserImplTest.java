@@ -6,8 +6,6 @@ import webproject.models.User;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Andrew Zarazka on 28.04.2017.
  */
@@ -32,12 +30,12 @@ public class UserImplTest {
 
     @Test
     public void getMusicTypes() throws Exception {
-        String login = "user";
+        String login = "admin";
         UserImpl userImpl = new UserImpl();
         List<Model> users = userImpl.getByLogin(login);
         User user = (User) users.get(0);
 
-        List<Model> musics = userImpl.getMusicTypes(user);
+        List<Model> musics = userImpl.getUserMusicTypes(user);
         for (Model music : musics) {
             System.out.println(music);
         }

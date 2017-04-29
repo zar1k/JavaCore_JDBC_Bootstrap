@@ -1,6 +1,7 @@
 package webproject.dao.impl;
 
 import webproject.models.MusicType;
+import webproject.templates.MusicTypeTemplate;
 import webproject.templates.Template;
 import webproject.templates.UserTemplate;
 import webproject.dao.IUser;
@@ -21,7 +22,7 @@ public class UserImpl implements IUser {
     private static final String UPDATE = "UPDATE test_db.users SET login = ?, password = ?, first_name = ?, last_name = ?, age = ?, role_id = ?, address_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM test_db.users WHERE id = ?";
 
-    private static final String ADD_LINK_USER_HAS_MUSIC_TYPE = "INSERT INTO test_db.users_has_music_type (users_id, music_type_id) VALUES (?, ?)";
+    private static final String ADD_LINK_USER_HAS_MUSIC_TYPE = "INSERT INTO test_db.users_has_music_type (`users_id`, `music_type_id`) VALUES ((SELECT id FROM users WHERE login = ?), (SELECT id FROM music_type WHERE name = ?))";
     private static final String GET_LINK_USER_HAS_MUSIC_TYPE = "SELECT mt.id, mt.name FROM music_type AS mt JOIN users_has_music_type AS uhmt ON mt.id = uhmt.music_type_id AND uhmt.users_id = (SELECT id FROM users WHERE login = ?)";
     private static final String DELETE_LINK_USER_HAS_MUSIC_TYPE = "DELETE FROM test_db.users_has_music_type WHERE users_id = ?";
 
@@ -66,14 +67,20 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public List<Model> getMusicTypes(User user) {
+    public void addUserMusicTypes(User user, MusicType musicType) {
         Template template = new UserTemplate();
+        template.execute(instance, ADD_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim(), musicType.getName().trim());
+    }
+
+    @Override
+    public List<Model> getUserMusicTypes(User user) {
+        Template template = new MusicTypeTemplate();
         return template.executeAndReturn(instance, GET_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim());
     }
 
     @Override
-    public void addUserMusicTypes(User user, MusicType musicType) {
+    public void deleteUserMusicTypes(User user) {
         Template template = new UserTemplate();
-        template.execute(instance, ADD_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim(), musicType.getName().trim());
+        template.execute(instance, DELETE_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim());
     }
 }

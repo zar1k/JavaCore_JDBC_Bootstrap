@@ -81,16 +81,10 @@ CREATE TABLE IF NOT EXISTS `test_db`.`users_has_music_type` (
   PRIMARY KEY (`users_id`, `music_type_id`),
   INDEX `fk_users_has_music_type_music_type1_idx` (`music_type_id` ASC),
   INDEX `fk_users_has_music_type_users1_idx` (`users_id` ASC),
-  CONSTRAINT `music_type_id`
   FOREIGN KEY (`music_type_id`)
-  REFERENCES `test_db`.`music_type` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `users_id`
+  REFERENCES `test_db`.`music_type` (`id`),
   FOREIGN KEY (`users_id`)
   REFERENCES `test_db`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
