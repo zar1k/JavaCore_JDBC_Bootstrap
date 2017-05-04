@@ -34,55 +34,45 @@
 <body>
 
 <div id="wrapper">
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <!-- Navigation  -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" id="my-navbar">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/admin-page">Music Fan</a>
+            <a class="navbar-brand" href="dashboard">Music Fan</a>
         </div>
-        <!-- /.navbar-header -->
-
         <ul class="nav navbar-top-links navbar-right">
             <li>
                 ${user.firstName} ${user.lastName}
             </li>
-            <li><a href="index.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
         </ul>
-        <!-- /.navbar-top-links -->
-
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="/admin-page"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
+                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="/admin-panel"><i class="fa fa-tachometer" aria-hidden="true"></i></i> Control Panel</a>
+                        <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i></i> Control Panel</a>
                     </li>
                 </ul>
             </div>
-            <!-- /.sidebar-collapse -->
         </div>
-        <!-- /.navbar-static-side -->
     </nav>
 
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">INFO</h1>
+                <h1 class="page-header">DASHBOARD</h1>
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
         <div class="row">
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-users" aria-hidden="true"></i> User Information
                     </div>
-                    <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover"
-                               id="information-users">
+                        <table class="table table-striped table-bordered table-hover" id="information-users">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -95,7 +85,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="userList" items="${userList}">
-                                <tr class="odd gradeX">
+                                <tr>
                                     <td>${userList.id}</td>
                                     <td>${userList.login}</td>
                                     <td>${userList.password}</td>
@@ -107,20 +97,15 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.panel-body -->
                 </div>
-                <!-- /.panel -->
             </div>
-            <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-envelope" aria-hidden="true"></i> User Address
                     </div>
-                    <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover"
-                               id="information-address">
+                        <table class="table table-striped table-bordered table-hover" id="information-address">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -131,7 +116,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="addresses" items="${addresses}">
-                                <tr class="odd gradeX">
+                                <tr>
                                     <td>${addresses.id}</td>
                                     <td>${addresses.country}</td>
                                     <td>${addresses.street}</td>
@@ -141,20 +126,15 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.panel-body -->
                 </div>
-                <!-- /.panel -->
             </div>
-            <!-- /.col-lg-6 -->
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-users" aria-hidden="true"></i> Full information about the users
                     </div>
-                    <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover"
-                               id="dataTables-example">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                             <tr>
                                 <th>ID</th>
@@ -172,7 +152,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="userList" items="${userList}">
-                                <tr class="odd gradeX">
+                                <tr>
                                     <td>${userList.id}</td>
                                     <td>${userList.getRole().name}</td>
                                     <td>${userList.login}</td>
@@ -193,18 +173,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- /.panel-body -->
                 </div>
-                <!-- /.panel -->
             </div>
-            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /#page-wrapper -->
 </div>
-<!-- /#wrapper -->
-
 <!-- jQuery -->
 <script src="./resources/vendor/jquery/jquery-3.2.1.js"></script>
 <!-- Bootstrap Core JavaScript -->
