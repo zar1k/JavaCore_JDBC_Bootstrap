@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Login Pages</title>
+    <title>Login Page</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="./resources/my-theme.css" rel="stylesheet">
-    <!-- Custom Fonts -->
+    <link href="./resources/my-theme.css" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
     <link href="./resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,10 +35,10 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="/login" method="post">
+                    <form role="form" action="login" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Username" name="login" type="text" autofocus>
+                                <input class="form-control" placeholder="Login" name="login" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password">

@@ -19,6 +19,15 @@ public interface IUser extends IModel<User> {
     List<Model> getByLogin(String login);
 
     /**
+     * Gets by User
+     *
+     * @param login    the user's login
+     * @param password the user's password
+     * @return user
+     */
+    List<Model> getByLoginAndPassword(String login, String password);
+
+    /**
      * Get a list of the user's music
      *
      * @param user

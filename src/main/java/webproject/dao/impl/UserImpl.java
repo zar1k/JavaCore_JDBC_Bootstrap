@@ -21,6 +21,7 @@ public class UserImpl implements IUser {
     private static final String CREATE = "INSERT INTO test_db.users (login, password, first_name, last_name, age, role_id, address_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE test_db.users SET login = ?, password = ?, first_name = ?, last_name = ?, age = ?, role_id = ?, address_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM test_db.users WHERE id = ?";
+    private static final String GET_BY_LOGIN_AND_PASSWORD = "SELECT * FROM test_db.users WHERE login = ? AND password = ?";
 
     private static final String ADD_LINK_USER_HAS_MUSIC_TYPE = "INSERT INTO test_db.users_has_music_type (`users_id`, `music_type_id`) VALUES ((SELECT id FROM users WHERE login = ?), (SELECT id FROM music_type WHERE name = ?))";
     private static final String GET_LINK_USER_HAS_MUSIC_TYPE = "SELECT mt.id, mt.name FROM music_type AS mt JOIN users_has_music_type AS uhmt ON mt.id = uhmt.music_type_id AND uhmt.users_id = (SELECT id FROM users WHERE login = ?)";
@@ -64,6 +65,12 @@ public class UserImpl implements IUser {
     public List<Model> getByLogin(String login) {
         Template template = new UserTemplate();
         return template.executeAndReturn(instance, GET_BY_LOGIN, login.trim());
+    }
+
+    @Override
+    public List<Model> getByLoginAndPassword(String login, String password) {
+        Template template = new UserTemplate();
+        return template.executeAndReturn(instance, GET_BY_LOGIN_AND_PASSWORD, login.trim(), password.trim());
     }
 
     @Override
