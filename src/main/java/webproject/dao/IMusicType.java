@@ -15,5 +15,5 @@ public interface IMusicType extends IModel<MusicType> {
      * @param name the MusicType name
      * @return the MusicType name
      */
-    List<Model> getByName(String name);
+    List<MusicType> getByName(String name);
 }

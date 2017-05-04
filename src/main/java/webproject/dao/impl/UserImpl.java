@@ -30,13 +30,13 @@ public class UserImpl implements IUser {
     private DataSource instance = DataSource.getInstance();
 
     @Override
-    public List<Model> getAll() {
+    public List<User> getAll() {
         Template template = new UserTemplate();
         return template.executeAndReturn(instance, GET_ALL);
     }
 
     @Override
-    public List<Model> getById(int id) {
+    public List<User> getById(int id) {
         Template template = new UserTemplate();
         return template.executeAndReturn(instance, GET_BY_ID, id);
     }
@@ -62,13 +62,13 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public List<Model> getByLogin(String login) {
+    public List<User> getByLogin(String login) {
         Template template = new UserTemplate();
         return template.executeAndReturn(instance, GET_BY_LOGIN, login.trim());
     }
 
     @Override
-    public List<Model> getByLoginAndPassword(String login, String password) {
+    public List<User> getByLoginAndPassword(String login, String password) {
         Template template = new UserTemplate();
         return template.executeAndReturn(instance, GET_BY_LOGIN_AND_PASSWORD, login.trim(), password.trim());
     }
@@ -80,7 +80,7 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public List<Model> getUserMusicTypes(User user) {
+    public List<MusicType> getUserMusicTypes(User user) {
         Template template = new MusicTypeTemplate();
         return template.executeAndReturn(instance, GET_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim());
     }

@@ -3,7 +3,6 @@ package webproject.controlers;
 import webproject.models.User;
 import webproject.services.LoginService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Andrew Zarazka on 29.04.2017.
  */
-@WebServlet(urlPatterns = "/login")
+@WebServlet(urlPatterns = "/login", name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
@@ -26,12 +25,10 @@ public class LoginServlet extends HttpServlet {
         if (result) {
             User user = loginService.getUser(login);
             request.getSession().setAttribute("user", user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("greetings.jsp");
-            dispatcher.forward(request, response);
+            response.sendRedirect("dashboard");
             return;
         } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
             return;
         }
     }

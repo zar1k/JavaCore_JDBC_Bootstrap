@@ -23,13 +23,13 @@ public class RoleImpl implements IRole {
     private DataSource instance = DataSource.getInstance();
 
     @Override
-    public List<Model> getAll() {
+    public List<Role> getAll() {
         Template template = new RoleTemplate();
         return template.executeAndReturn(instance, GET_ALL);
     }
 
     @Override
-    public List<Model> getById(int id) {
+    public List<Role> getById(int id) {
         Template template = new RoleTemplate();
         return template.executeAndReturn(instance, GET_BY_ID, id);
     }
@@ -53,7 +53,7 @@ public class RoleImpl implements IRole {
     }
 
     @Override
-    public List<Model> getByName(String name) {
+    public List<Role> getByName(String name) {
         Template template = new RoleTemplate();
         return template.executeAndReturn(instance, GET_BY_NAME, name.trim());
     }

@@ -13,7 +13,7 @@ import java.util.List;
  * Template class for working with JDBC
  * Created by Andrew Zarazka on 28.04.2017.
  */
-public abstract class Template {
+public abstract class Template<M extends Model> {
     /**
      * Execute query (CREATE, UPDATE, DELETE ) the database
      *
@@ -42,7 +42,7 @@ public abstract class Template {
      * @param query    the database query
      * @return the list of {@link webproject.models.Model}
      */
-    public final List<Model> executeAndReturn(final DataSource instance, final String query) {
+    public final List<M> executeAndReturn(final DataSource instance, final String query) {
         return executeAndReturnValue(instance, query, new Object[0]);
     }
 
@@ -54,7 +54,7 @@ public abstract class Template {
      * @param args     the args
      * @return the list of {@link webproject.models.Model}
      */
-    public final List<Model> executeAndReturn(final DataSource instance, final String query, Object... args) {
+    public final List<M> executeAndReturn(final DataSource instance, final String query, Object... args) {
         return executeAndReturnValue(instance, query, args);
     }
 
@@ -85,8 +85,8 @@ public abstract class Template {
      * @param args     the args
      * @return the list of {@link webproject.models.Model}
      */
-    private final List<Model> executeAndReturnValue(final DataSource instance, final String query, Object... args) {
-        List<Model> models = null;
+    private final List<M> executeAndReturnValue(final DataSource instance, final String query, Object... args) {
+        List<M> models = null;
         Connection conn = instance.getConnection();
         try (PreparedStatement statement = conn.prepareStatement(query)) {
             setArgsOfPreparedStatement(statement, args);
@@ -123,5 +123,5 @@ public abstract class Template {
      * @return the list of {@link webproject.models.Model}
      * @throws SQLException hte SQL exception
      */
-    public abstract List<Model> getListOfResult(ResultSet rs) throws SQLException;
+    public abstract List<M> getListOfResult(ResultSet rs) throws SQLException;
 }

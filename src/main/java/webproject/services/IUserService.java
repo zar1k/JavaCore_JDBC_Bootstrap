@@ -1,15 +1,50 @@
-package webproject.dao;
+package webproject.services;
 
-import webproject.models.Model;
 import webproject.models.MusicType;
 import webproject.models.User;
 
 import java.util.List;
 
 /**
- * Created by Andrew Zarazka on 28.04.2017.
+ * Created by Andrew Zarazka on 04.05.2017.
  */
-public interface IUser extends IModel<User> {
+public interface IUserService {
+    /**
+     * Gets all users
+     *
+     * @return list of users
+     */
+    List<User> getAll();
+
+    /**
+     * Gets by id
+     *
+     * @param id the id
+     * @return list of users
+     */
+    List<User> getById(int id);
+
+    /**
+     * Create new User
+     *
+     * @param user new user
+     */
+    void create(User user);
+
+    /**
+     * Update current User
+     *
+     * @param user Current object User
+     */
+    void update(User user);
+
+    /**
+     * Delete user by id
+     *
+     * @param id user id
+     */
+    void delete(int id);
+
     /**
      * Gets by User name
      *

@@ -22,13 +22,13 @@ public class AddressImpl implements IAddress {
     private DataSource instance = DataSource.getInstance();
 
     @Override
-    public List<Model> getAll() {
+    public List<Address> getAll() {
         Template template = new AddressTemplate();
         return template.executeAndReturn(instance, GET_ALL);
     }
 
     @Override
-    public List<Model> getById(int id) {
+    public List<Address> getById(int id) {
         Template template = new AddressTemplate();
         return template.executeAndReturn(instance, GET_BY_ID, id);
     }

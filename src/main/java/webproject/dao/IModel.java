@@ -11,9 +11,9 @@ import java.util.List;
  * @param <T> the type parameter
  */
 public interface IModel<T extends Model> {
-    List<Model> getAll();
+    List<T> getAll();
 
-    List<Model> getById(int id);
+    List<T> getById(int id);
 
     void create(T t);
 

@@ -23,13 +23,13 @@ public class MusicTypeImpl implements IMusicType {
     private DataSource instance = DataSource.getInstance();
 
     @Override
-    public List<Model> getAll() {
+    public List<MusicType> getAll() {
         Template template = new MusicTypeTemplate();
         return template.executeAndReturn(instance, GET_ALL);
     }
 
     @Override
-    public List<Model> getById(int id) {
+    public List<MusicType> getById(int id) {
         Template template = new MusicTypeTemplate();
         return template.executeAndReturn(instance, GET_BY_ID, id);
     }
@@ -53,7 +53,7 @@ public class MusicTypeImpl implements IMusicType {
     }
 
     @Override
-    public List<Model> getByName(String name) {
+    public List<MusicType> getByName(String name) {
         Template template = new MusicTypeTemplate();
         return template.executeAndReturn(instance, GET_BY_NAME, name.trim());
     }

@@ -1,8 +1,7 @@
 package webproject.services;
 
-import webproject.dao.impl.UserImpl;
-import webproject.models.Model;
 import webproject.models.User;
+import webproject.services.impl.UserServiceImpl;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ import java.util.List;
 public class LoginService {
     public boolean authenticate(String login, String password) {
         boolean userExists;
-        UserImpl userImpl = new UserImpl();
-        List<Model> models = userImpl.getByLoginAndPassword(login, password);
-        if (models.isEmpty()) {
+        IUserService userImpl = new UserServiceImpl();
+        List<User> users = userImpl.getByLoginAndPassword(login, password);
+        if (users.isEmpty()) {
             userExists = false;
         } else {
             userExists = true;
@@ -23,9 +22,9 @@ public class LoginService {
     }
 
     public User getUser(String login) {
-        UserImpl userImpl = new UserImpl();
-        List<Model> models = userImpl.getByLogin(login);
-        User user = (User) models.get(0);
+        IUserService userImpl = new UserServiceImpl();
+        List<User> users = userImpl.getByLogin(login);
+        User user = users.get(0);
         return user;
     }
 }

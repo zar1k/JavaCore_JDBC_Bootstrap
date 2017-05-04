@@ -15,5 +15,5 @@ public interface IRole extends IModel<Role> {
      * @param name the Role name
      * @return the Role name
      */
-    List<Model> getByName(String name);
+    List<Role> getByName(String name);
 }

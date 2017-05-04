@@ -1,7 +1,6 @@
 package webproject.templates;
 
 import webproject.models.Address;
-import webproject.models.Model;
 import webproject.models.Role;
 import webproject.models.User;
 
@@ -13,10 +12,10 @@ import java.util.List;
 /**
  * Created by Andrew Zarazka on 28.04.2017.
  */
-public class UserTemplate extends Template {
+public class UserTemplate extends Template<User> {
     @Override
-    public List<Model> getListOfResult(ResultSet rs) throws SQLException {
-        List<Model> models = new ArrayList<>();
+    public List<User> getListOfResult(ResultSet rs) throws SQLException {
+        List<User> users = new ArrayList<>();
         while (rs.next()) {
             User user = new User();
             user.setId(rs.getInt("id"));
@@ -27,8 +26,8 @@ public class UserTemplate extends Template {
             user.setAge(rs.getInt("age"));
             user.setRole(new Role(rs.getInt("role_id")));
             user.setAddress(new Address(rs.getInt("address_id")));
-            models.add(user);
+            users.add(user);
         }
-        return models;
+        return users;
     }
 }

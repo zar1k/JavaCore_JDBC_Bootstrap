@@ -2,6 +2,7 @@ package webproject.dao.impl;
 
 import org.junit.Test;
 import webproject.models.Model;
+import webproject.models.MusicType;
 import webproject.models.User;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class UserImplTest {
     @Test
     public void getAll() throws Exception {
         UserImpl userImpl = new UserImpl();
-        List<Model> users = userImpl.getAll();
+        List<User> users = userImpl.getAll();
         for (Model user : users) {
             System.out.println(user);
         }
@@ -23,8 +24,8 @@ public class UserImplTest {
     public void getByLogin() throws Exception {
         String login = "user";
         UserImpl userImpl = new UserImpl();
-        List<Model> users = userImpl.getByLogin(login);
-        User user = (User) users.get(0);
+        List<User> users = userImpl.getByLogin(login);
+        User user = users.get(0);
         System.out.println(user);
     }
 
@@ -32,11 +33,11 @@ public class UserImplTest {
     public void getMusicTypes() throws Exception {
         String login = "admin";
         UserImpl userImpl = new UserImpl();
-        List<Model> users = userImpl.getByLogin(login);
-        User user = (User) users.get(0);
+        List<User> users = userImpl.getByLogin(login);
+        User user = users.get(0);
 
-        List<Model> musics = userImpl.getUserMusicTypes(user);
-        for (Model music : musics) {
+        List<MusicType> musics = userImpl.getUserMusicTypes(user);
+        for (MusicType music : musics) {
             System.out.println(music);
         }
     }
