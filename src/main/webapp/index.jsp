@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ru">
@@ -35,10 +36,13 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
+                    <c:if test="${error}">
+                        <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
+                    </c:if>
                     <form role="form" action="login" method="post">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Login" name="login" type="text" autofocus>
+                                <input class="form-control" placeholder="Username" name="login" type="text" autofocus>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" placeholder="Password" name="password" type="password">

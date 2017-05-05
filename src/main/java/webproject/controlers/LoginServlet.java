@@ -28,6 +28,8 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("dashboard");
             return;
         } else {
+            boolean error = true;
+            request.setAttribute("error", error);
             request.getRequestDispatcher("index.jsp").forward(request, response);
             return;
         }

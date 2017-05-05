@@ -2,6 +2,7 @@ package webproject.services;
 
 import webproject.models.User;
 import webproject.services.impl.UserServiceImpl;
+import webproject.utils.Numbers;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class LoginService {
     public User getUser(String login) {
         IUserService userImpl = new UserServiceImpl();
         List<User> users = userImpl.getByLogin(login);
-        User user = users.get(0);
+        User user = users.get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         return user;
     }
 }

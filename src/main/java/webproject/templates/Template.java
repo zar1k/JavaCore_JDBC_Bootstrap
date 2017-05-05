@@ -3,10 +3,7 @@ package webproject.templates;
 import webproject.models.Model;
 import webproject.utils.DataSource;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -67,7 +64,7 @@ public abstract class Template<M extends Model> {
      */
     private final void executeQuery(final DataSource instance, String query, Object... args) {
         Connection conn = instance.getConnection();
-        try (PreparedStatement st = conn.prepareStatement(query);) {
+        try (PreparedStatement st = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             setArgsOfPreparedStatement(st, args);
             st.executeUpdate();
         } catch (SQLException e) {
@@ -88,9 +85,9 @@ public abstract class Template<M extends Model> {
     private final List<M> executeAndReturnValue(final DataSource instance, final String query, Object... args) {
         List<M> models = null;
         Connection conn = instance.getConnection();
-        try (PreparedStatement statement = conn.prepareStatement(query)) {
+        try (PreparedStatement statement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             setArgsOfPreparedStatement(statement, args);
-            try (ResultSet rs = statement.executeQuery();) {
+            try (ResultSet rs = statement.executeQuery()) {
                 models = getListOfResult(rs);
             }
         } catch (SQLException e) {

@@ -7,6 +7,7 @@ import webproject.services.IUserService;
 import webproject.services.impl.AddressServiceImpl;
 import webproject.services.impl.RoleServiceImpl;
 import webproject.services.impl.UserServiceImpl;
+import webproject.utils.Numbers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,12 +23,6 @@ import java.util.List;
  */
 @WebServlet(urlPatterns = "/dashboard", name = "DashboardServlet")
 public class DashboardServlet extends HttpServlet {
-    private static final int FIRST_ELEMENT = 0;
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IUserService userService = new UserServiceImpl();
         IRoleService roleService = new RoleServiceImpl();
@@ -38,8 +33,8 @@ public class DashboardServlet extends HttpServlet {
 
         List<User> users = userService.getAll();
         for (User user : users) {
-            user.setRole(roleService.getById(user.getRole().getId()).get(FIRST_ELEMENT));
-            user.setAddress(addressService.getById(user.getAddress().getId()).get(FIRST_ELEMENT));
+            user.setRole(roleService.getById(user.getRole().getId()).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
+            user.setAddress(addressService.getById(user.getAddress().getId()).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
             user.setMusicTypes(userService.getUserMusicTypes(user));
             userList.add(user);
         }

@@ -45,7 +45,7 @@ public class UserImpl implements IUser {
     public void create(User user) {
         Template template = new UserTemplate();
         template.execute(instance, CREATE, user.getLogin().trim(), user.getPassword().trim(), user.getFirstName().trim(),
-                user.getLastName().trim(), user.getAge(), user.getRole().getId(), user.getAddress());
+                user.getLastName().trim(), user.getAge(), user.getRole().getId(), user.getAddress().getId());
     }
 
     @Override

@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Admin Page</title>
+    <title>Dashboard Page</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -49,10 +49,10 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
+                        <a href="dashboard"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i></i> Control Panel</a>
+                        <a href="panel"><i class="fa fa-tachometer" aria-hidden="true"></i> Control Panel</a>
                     </li>
                 </ul>
             </div>
@@ -62,7 +62,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">DASHBOARD</h1>
+                <h2 class="page-header">DASHBOARD</h2>
             </div>
         </div>
         <div class="row">

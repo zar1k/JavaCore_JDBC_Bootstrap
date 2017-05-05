@@ -42,4 +42,9 @@ public class UserImplTest {
         }
     }
 
+    @Test
+    public void create() throws Exception {
+
+    }
+
 }
