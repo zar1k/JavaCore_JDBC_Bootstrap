@@ -58,18 +58,21 @@ public class CreateServlet extends HttpServlet {
         user.setAge(Integer.parseInt(age));
         user.setRole(roleService.getById(Integer.parseInt(role)).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
 
-        address.setId(user.getId());
         address.setCountry(country);
         address.setStreet(street);
         address.setZipCode(Integer.parseInt(zipCode));
 
         user.setAddress(address);
-
-        for (int i = 0; i < musicTypes.length; i++) {
-            user.setMusicTypes(musicTypeService.getByName(musicTypes[i]));
-        }
-
         userService.create(user);
+
+//        for (int i = 0; i < musicTypes.length; i++) {
+//            List<MusicType> types = musicTypeService.getByName(musicTypes[i]);
+//            for (MusicType type : types) {
+//                userService.addUserMusicTypes(userService.getByLogin(login).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()), type);
+//            }
+//        }
+
+
         response.sendRedirect("dashboard");
     }
 

@@ -58,12 +58,10 @@ CREATE TABLE IF NOT EXISTS `test_db`.`users` (
   UNIQUE INDEX `login_UNIQUE` (`login` ASC),
   INDEX `fk_users_role_idx` (`role_id` ASC),
   INDEX `fk_users_address1_idx` (`address_id` ASC),
-  CONSTRAINT `fk_users_role`
   FOREIGN KEY (`role_id`)
   REFERENCES `test_db`.`role` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_address1`
   FOREIGN KEY (`address_id`)
   REFERENCES `test_db`.`address` (`id`)
     ON DELETE NO ACTION

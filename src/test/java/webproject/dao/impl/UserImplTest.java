@@ -4,6 +4,9 @@ import org.junit.Test;
 import webproject.models.Model;
 import webproject.models.MusicType;
 import webproject.models.User;
+import webproject.services.IUserService;
+import webproject.services.impl.UserServiceImpl;
+import webproject.utils.Numbers;
 
 import java.util.List;
 
@@ -44,7 +47,7 @@ public class UserImplTest {
 
     @Test
     public void create() throws Exception {
-
+        IUserService userService = new UserServiceImpl();
+        System.out.println(userService.getByLogin("user").get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
     }
-
 }

@@ -4,7 +4,7 @@ package webproject.utils;
  * Created by Andrew Zarazka on 05.05.2017.
  */
 public enum Numbers {
-    FIRST_ELEMENT_OF_LIST(0);
+    FIRST_ELEMENT_OF_LIST(0), DEFAULT_ID(-1);
 
     private int number;
 

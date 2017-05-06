@@ -2,6 +2,7 @@ package webproject.templates;
 
 import webproject.models.Model;
 import webproject.utils.DataSource;
+import webproject.utils.Numbers;
 
 import java.sql.*;
 import java.util.List;
@@ -11,6 +12,29 @@ import java.util.List;
  * Created by Andrew Zarazka on 28.04.2017.
  */
 public abstract class Template<M extends Model> {
+    /**
+     * Lets you know the next automatic id mysql
+     *
+     * @param instance the DataSource instance
+     * @param query    the database query
+     * @return next automatic id mysql
+     */
+    public final int getNextIndexAutoIncrement(final DataSource instance, final String query) {
+        int nextID = Numbers.DEFAULT_ID.getNumber();
+        Connection conn = instance.getConnection();
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    nextID = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        instance.closeConnection(conn);
+        return nextID;
+    }
+
     /**
      * Execute query (CREATE, UPDATE, DELETE ) the database
      *
