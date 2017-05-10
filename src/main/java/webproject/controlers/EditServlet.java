@@ -28,8 +28,9 @@ import java.util.List;
  */
 @WebServlet(urlPatterns = "/edit", name = "EditServlet")
 public class EditServlet extends HttpServlet {
+    private int userID;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -38,12 +39,14 @@ public class EditServlet extends HttpServlet {
         String country = request.getParameter("country");
         String street = request.getParameter("street");
         String zipCode = request.getParameter("zipCode");
-        String[] musicTypes = request.getParameterValues("listMusics");
+        String[] musicTypes = request.getParameterValues("musicTypeList");
 
-        IRoleService roleService = new RoleServiceImpl();
         IUserService userService = new UserServiceImpl();
-        User user = new User();
-        user.setLogin(login);
+        IRoleService roleService = new RoleServiceImpl();
+        IAddressService addressService = new AddressServiceImpl();
+        IMusicTypeService musicTypeService = new MusicTypeServiceImpl();
+
+        User user = userService.getById(userID).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         user.setPassword(password);
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -51,38 +54,40 @@ public class EditServlet extends HttpServlet {
         user.setRole(roleService.getById(Integer.parseInt(role)).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
 
 
-        Address address = new Address();
+        Address address = addressService.getById(userID).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         address.setCountry(country);
         address.setStreet(street);
         address.setZipCode(Integer.parseInt(zipCode));
+        addressService.update(address);
 
         user.setAddress(address);
-        userService.create(user);
+        userService.update(user);
 
         userService.deleteUserMusicTypes(user);
-        IMusicTypeService musicTypeService = new MusicTypeServiceImpl();
+
         for (int i = 0; i < musicTypes.length; i++) {
-            user.setMusicTypes(musicTypeService.getByName(musicTypes[i]));
+            List<MusicType> types = musicTypeService.getByName(musicTypes[i]);
+            for (MusicType type : types) {
+                userService.addUserMusicTypes(userService.getByLogin(user.getLogin()).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()), type);
+            }
         }
-        userService.addUserMusicTypes(user, null);
-        userService.create(user);
-        response.sendRedirect("edit");
+        response.sendRedirect("panel");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Enumeration<String> enumeration = request.getParameterNames();
-        int id = Integer.parseInt(enumeration.nextElement());
+        userID = Integer.parseInt(enumeration.nextElement());
 
         IUserService userService = new UserServiceImpl();
         IRoleService roleService = new RoleServiceImpl();
         IAddressService addressService = new AddressServiceImpl();
         IMusicTypeService musicTypeService = new MusicTypeServiceImpl();
 
-        User tmpUser = userService.getById(id).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
+        User tmpUser = userService.getById(userID).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         Role role = tmpUser.getRole();
         List<MusicType> userMusicTypes = userService.getUserMusicTypes(tmpUser);
         List<Role> roleList = roleService.getAll();
-        Address address = addressService.getById(id).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
+        Address address = addressService.getById(userID).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         List<MusicType> musicTypeList = musicTypeService.getAll();
 
         request.setAttribute("tmpUser", tmpUser);

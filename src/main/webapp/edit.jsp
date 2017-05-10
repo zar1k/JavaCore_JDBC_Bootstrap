@@ -80,11 +80,8 @@
                                         <hr>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Username</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="username" name="login"
-                                                   placeholder="user100" value="${tmpUser.login}">
-                                        </div>
+                                        <label class="col-sm-2">Username</label>
+                                        <label class="col-sm-10">${tmpUser.login}</label>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="col-sm-2 control-label">Password</label>
@@ -96,7 +93,7 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">First Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="Firstname" name="firstName"
+                                            <input type="text" class="form-control" id="firstname" name="firstName"
                                                    placeholder="Andrew" value="${tmpUser.firstName}">
                                         </div>
                                     </div>
@@ -120,7 +117,7 @@
                                         <hr>
                                     </div>
                                     <div class="form-group">
-                                        <label for="country" class="col-sm-2 control-label">User Type</label>
+                                        <label class="col-sm-2 control-label">User Role</label>
                                         <div class="col-sm-10">
                                             <div class="radio">
                                                 <c:forEach var="roleList" items="${roleList}">
@@ -177,7 +174,7 @@
                                         <hr>
                                     </div>
                                     <div class="form-group">
-                                        <label for="street" class="col-sm-2 control-label">Choose</label>
+                                        <label class="col-sm-2 control-label">Choose</label>
                                         <div class="col-sm-10">
                                             <div class="checkbox">
                                                 <c:forEach var="musicTypeList" items="${musicTypeList}">
@@ -196,7 +193,7 @@
                                                     </c:forEach>
                                                     <c:if test="${count==0}">
                                                         <label>
-                                                            <input type="checkbox" name="listMusics"
+                                                            <input type="checkbox" name="musicTypeList"
                                                                    value="${musicTypeList.name}">
                                                                 ${musicTypeList.name}
                                                         </label>

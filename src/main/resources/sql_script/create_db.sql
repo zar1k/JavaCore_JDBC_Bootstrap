@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS `test_db`.`users` (
     ON UPDATE NO ACTION,
   FOREIGN KEY (`address_id`)
   REFERENCES `test_db`.`address` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;

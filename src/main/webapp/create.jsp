@@ -96,7 +96,7 @@
                                     <div class="form-group">
                                         <label for="firstname" class="col-sm-2 control-label">First Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="Firstname" name="firstName"
+                                            <input type="text" class="form-control" id="firstname" name="firstName"
                                                    placeholder="Andrew">
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                         <hr>
                                     </div>
                                     <div class="form-group">
-                                        <label for="country" class="col-sm-2 control-label">User Type</label>
+                                        <label class="col-sm-2 control-label">User Type</label>
                                         <div class="col-sm-10">
                                             <div class="radio">
                                                 <c:forEach var="roles" items="${roles}">
@@ -166,7 +166,7 @@
                                         <hr>
                                     </div>
                                     <div class="form-group">
-                                        <label for="street" class="col-sm-2 control-label">Choose</label>
+                                        <label class="col-sm-2 control-label">Choose</label>
                                         <div class="col-sm-10">
                                             <div class="checkbox">
                                                 <c:forEach var="musicTypes" items="${musicTypes}">
@@ -202,30 +202,7 @@
 <!-- DataTables JavaScript -->
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#information-users').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#information-address').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
+<!-- Custom JS -->
+<script src="./resources/my-script.js"></script>
 </body>
 </html>

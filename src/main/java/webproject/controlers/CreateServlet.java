@@ -4,9 +4,11 @@ import webproject.models.Address;
 import webproject.models.MusicType;
 import webproject.models.Role;
 import webproject.models.User;
+import webproject.services.IAddressService;
 import webproject.services.IMusicTypeService;
 import webproject.services.IRoleService;
 import webproject.services.IUserService;
+import webproject.services.impl.AddressServiceImpl;
 import webproject.services.impl.MusicTypeServiceImpl;
 import webproject.services.impl.RoleServiceImpl;
 import webproject.services.impl.UserServiceImpl;
@@ -30,6 +32,7 @@ public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IUserService userService = new UserServiceImpl();
         IRoleService roleService = new RoleServiceImpl();
+        IAddressService addressService = new AddressServiceImpl();
         IMusicTypeService musicTypeService = new MusicTypeServiceImpl();
 
         User user = new User();
@@ -61,19 +64,18 @@ public class CreateServlet extends HttpServlet {
         address.setCountry(country);
         address.setStreet(street);
         address.setZipCode(Integer.parseInt(zipCode));
+        addressService.create(address);
 
         user.setAddress(address);
         userService.create(user);
 
-//        for (int i = 0; i < musicTypes.length; i++) {
-//            List<MusicType> types = musicTypeService.getByName(musicTypes[i]);
-//            for (MusicType type : types) {
-//                userService.addUserMusicTypes(userService.getByLogin(login).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()), type);
-//            }
-//        }
-
-
-        response.sendRedirect("dashboard");
+        for (int i = 0; i < musicTypes.length; i++) {
+            List<MusicType> types = musicTypeService.getByName(musicTypes[i]);
+            for (MusicType type : types) {
+                userService.addUserMusicTypes(userService.getByLogin(login).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()), type);
+            }
+        }
+        response.sendRedirect("panel");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

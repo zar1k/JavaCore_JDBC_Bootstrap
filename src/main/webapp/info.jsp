@@ -136,30 +136,7 @@
 <!-- DataTables JavaScript -->
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#information-users').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#information-address').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#dataTables-example').DataTable({
-            responsive: true
-        });
-    });
-</script>
-
+<!-- Custom JS -->
+<script src="./resources/my-script.js"></script>
 </body>
 </html>

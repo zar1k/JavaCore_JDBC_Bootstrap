@@ -19,7 +19,7 @@ public abstract class Template<M extends Model> {
      * @param query    the database query
      * @return next automatic id mysql
      */
-    public final int getNextIndexAutoIncrement(final DataSource instance, final String query) {
+    public final int getNextAutoIncrement(final DataSource instance, final String query) {
         int nextID = Numbers.DEFAULT_ID.getNumber();
         Connection conn = instance.getConnection();
         try (PreparedStatement statement = conn.prepareStatement(query)) {

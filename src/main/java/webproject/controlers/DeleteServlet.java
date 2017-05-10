@@ -27,10 +27,10 @@ public class DeleteServlet extends HttpServlet {
         Enumeration<String> enumeration = request.getParameterNames();
         int userId = Integer.parseInt(enumeration.nextElement());
 
-        addressService.delete(userId);
         userService.deleteUserMusicTypes(userService.getById(userId).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
         userService.delete(userId);
+        addressService.delete(userId);
 
-        response.sendRedirect("dashboard");
+        response.sendRedirect("panel");
     }
 }
