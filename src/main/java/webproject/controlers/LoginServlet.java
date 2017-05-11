@@ -22,16 +22,25 @@ public class LoginServlet extends HttpServlet {
         LoginService loginService = new LoginService();
         boolean result = loginService.authenticate(login, password);
 
-        if (result) {
-            User user = loginService.getUser(login);
-            request.getSession().setAttribute("user", user);
-            response.sendRedirect("dashboard");
-            return;
+        if (request.getParameter("loginBtn") != null) {
+            if (result) {
+                User user = loginService.getUser(login);
+                request.getSession().setAttribute("user", user);
+                response.sendRedirect("dashboard");
+                return;
+            } else {
+                boolean error = true;
+                request.setAttribute("error", error);
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                return;
+            }
         } else {
-            boolean error = true;
-            request.setAttribute("error", error);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-            return;
+            doGet(request, response);
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("signup");
     }
 }
