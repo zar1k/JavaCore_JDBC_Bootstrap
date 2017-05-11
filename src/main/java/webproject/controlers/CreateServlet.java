@@ -87,6 +87,6 @@ public class CreateServlet extends HttpServlet {
 
         request.setAttribute("roles", roles);
         request.setAttribute("musicTypes", musicTypes);
-        request.getRequestDispatcher("create.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/create.jsp").forward(request, response);
     }
 }

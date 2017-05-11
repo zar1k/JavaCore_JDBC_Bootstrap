@@ -16,11 +16,11 @@
     <title>Edit Page</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="./resources/my-theme.css" rel="stylesheet" type="text/css">
+    <link href="../resources/my-theme.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
-    <link href="./resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
 
@@ -220,9 +220,9 @@
     </div>
 </div>
 <!-- jQuery -->
-<script src="./resources/vendor/jquery/jquery-3.2.1.js"></script>
+<script src="../resources/vendor/jquery/jquery-3.2.1.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="./resources/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../resources/vendor/bootstrap/js/bootstrap.js"></script>
 <!-- DataTables JavaScript -->
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>

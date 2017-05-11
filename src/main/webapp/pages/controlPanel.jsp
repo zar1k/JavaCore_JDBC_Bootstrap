@@ -13,14 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Dashboard Page</title>
+    <title>Control Panel Page</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="./resources/my-theme.css" rel="stylesheet" type="text/css">
+    <link href="../resources/my-theme.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
-    <link href="./resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
 
@@ -63,76 +63,23 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">DASHBOARD</h2>
+                <h2 class="page-header">CONTROL PANEL</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-users" aria-hidden="true"></i> User Information
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered table-hover" id="information-users">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>Name</th>
-                                <th>Surname</th>
-                                <th>Age</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="userList" items="${userList}">
-                                <tr>
-                                    <td>${userList.id}</td>
-                                    <td>${userList.login}</td>
-                                    <td>${userList.password}</td>
-                                    <td>${userList.firstName}</td>
-                                    <td>${userList.lastName}</td>
-                                    <td class="text-center">${userList.age}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-envelope" aria-hidden="true"></i> User Address
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped table-bordered table-hover" id="information-address">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Country</th>
-                                <th>Street</th>
-                                <th>ZIP code</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="addresses" items="${addresses}">
-                                <tr>
-                                    <td>${addresses.id}</td>
-                                    <td>${addresses.country}</td>
-                                    <td>${addresses.street}</td>
-                                    <td class="text-center">${addresses.zipCode}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-users" aria-hidden="true"></i> Full information about the users
+                        <ul class="nav navbar-top-links navbar-right center-block">
+                            <li>
+                                <form action="create" method="get">
+                                    <button type="submit" class="btn btn-success btn-xs center-block"
+                                            title="Create User"><i class="fa fa-user-plus"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -149,6 +96,8 @@
                                 <th>Street</th>
                                 <th>ZIP Code</th>
                                 <th>Music Type</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -169,6 +118,22 @@
                                             ${musicType.name}
                                         </c:forEach>
                                     </td>
+                                    <form action="edit" method="get">
+                                        <td class="text-center">
+                                            <button type="submit" title="Edit User" class="btn btn-primary btn-xs"
+                                                    name="${userList.id}">
+                                                <i class="fa fa-pencil-square-o"></i>
+                                            </button>
+                                        </td>
+                                    </form>
+                                    <form action="delete" method="get">
+                                        <td class="text-center">
+                                            <button type="submit" title="Delete User" class="btn btn-danger btn-xs"
+                                                    name="${userList.id}">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </td>
+                                    </form>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -180,13 +145,13 @@
     </div>
 </div>
 <!-- jQuery -->
-<script src="./resources/vendor/jquery/jquery-3.2.1.js"></script>
+<script src="../resources/vendor/jquery/jquery-3.2.1.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="./resources/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../resources/vendor/bootstrap/js/bootstrap.js"></script>
 <!-- DataTables JavaScript -->
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <!-- Custom JS -->
-<script src="./resources/my-script.js"></script>
+<script src="../resources/my-script.js"></script>
 </body>
 </html>

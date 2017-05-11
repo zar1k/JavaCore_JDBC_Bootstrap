@@ -96,6 +96,6 @@ public class EditServlet extends HttpServlet {
         request.setAttribute("userMusicTypes", userMusicTypes);
         request.setAttribute("roleList", roleList);
         request.setAttribute("musicTypeList", musicTypeList);
-        request.getRequestDispatcher("edit.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/edit.jsp").forward(request, response);
     }
 }

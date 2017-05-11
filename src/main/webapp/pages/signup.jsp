@@ -13,11 +13,11 @@
     <title>Login Page</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="./resources/my-theme.css" rel="stylesheet" type="text/css">
+    <link href="../resources/my-theme.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
-    <link href="./resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="../resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -131,9 +131,9 @@
     </div>
 </div>
 <!-- jQuery -->
-<script src="./resources/vendor/jquery/jquery-3.2.1.js"></script>
+<script src="../resources/vendor/jquery/jquery-3.2.1.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="./resources/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../resources/vendor/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>
 

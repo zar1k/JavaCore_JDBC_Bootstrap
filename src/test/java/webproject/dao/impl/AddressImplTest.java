@@ -30,5 +30,8 @@ public class AddressImplTest {
         for (int i = 0; i < mass.length; i++) {
             System.out.println(mass[i]);
         }
+        String uri = "qwqw/eqqw/eewqeq/create";
+        String path = uri.substring(uri.lastIndexOf('/') + 1);
+        System.out.println(path);
     }
 }

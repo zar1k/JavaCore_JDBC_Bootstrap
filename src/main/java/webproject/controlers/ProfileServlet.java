@@ -20,6 +20,6 @@ public class ProfileServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("profile.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/profile.jsp").forward(request, response);
     }
 }

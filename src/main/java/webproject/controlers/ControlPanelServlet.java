@@ -46,6 +46,6 @@ public class ControlPanelServlet extends HttpServlet {
 
         request.setAttribute("userList", userList);
         request.setAttribute("addresses", addresses);
-        request.getRequestDispatcher("controlPanel.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/controlPanel.jsp").forward(request, response);
     }
 }

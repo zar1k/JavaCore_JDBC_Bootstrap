@@ -41,6 +41,6 @@ public class DashboardServlet extends HttpServlet {
 
         request.setAttribute("userList", userList);
         request.setAttribute("addresses", addresses);
-        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/dashboard.jsp").forward(request, response);
     }
 }

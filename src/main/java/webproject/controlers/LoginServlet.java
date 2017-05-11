@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 boolean error = true;
                 request.setAttribute("error", error);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("pages/login.jsp").forward(request, response);
                 return;
             }
         } else {
@@ -41,6 +41,10 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("signup");
+        if (request.getParameter("signupBtn") != null) {
+            response.sendRedirect("signup");
+        } else {
+            request.getRequestDispatcher("pages/login.jsp").forward(request, response);
+        }
     }
 }

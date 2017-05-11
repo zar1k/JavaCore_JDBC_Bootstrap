@@ -74,6 +74,6 @@ public class SignUpServlet extends HttpServlet {
         IMusicTypeService musicTypeService = new MusicTypeServiceImpl();
         List<MusicType> musicTypes = musicTypeService.getAll();
         request.setAttribute("musicTypes", musicTypes);
-        request.getRequestDispatcher("signup.jsp").forward(request, response);
+        request.getRequestDispatcher("pages/signup.jsp").forward(request, response);
     }
 }
