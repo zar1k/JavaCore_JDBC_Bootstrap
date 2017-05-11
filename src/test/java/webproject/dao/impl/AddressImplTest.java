@@ -3,7 +3,9 @@ package webproject.dao.impl;
 import org.junit.Test;
 import webproject.models.Address;
 import webproject.models.Model;
+import webproject.models.User;
 import webproject.services.IAddressService;
+import webproject.services.LoginService;
 import webproject.services.impl.AddressServiceImpl;
 
 import java.util.ArrayList;
@@ -30,8 +32,10 @@ public class AddressImplTest {
         for (int i = 0; i < mass.length; i++) {
             System.out.println(mass[i]);
         }
-        String uri = "qwqw/eqqw/eewqeq/create";
-        String path = uri.substring(uri.lastIndexOf('/') + 1);
-        System.out.println(path);
+        String login = "user";
+        LoginService loginService = new LoginService();
+        User user = loginService.getUser(login);
+        System.out.println(user);
+
     }
 }

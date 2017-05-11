@@ -2,6 +2,7 @@ package webproject.controlers;
 
 import webproject.models.User;
 import webproject.services.LoginService;
+import webproject.utils.Numbers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,17 +27,21 @@ public class LoginServlet extends HttpServlet {
             if (result) {
                 User user = loginService.getUser(login);
                 request.getSession().setAttribute("user", user);
-                response.sendRedirect("dashboard");
-                return;
+                if (Numbers.ADMIN_ID.getNumber() == user.getRole().getId() || Numbers.MODERATOR_ID.getNumber() == user.getRole().getId()) {
+                    response.sendRedirect("dashboard");
+                    return;
+                } else {
+                    response.sendRedirect("profile");
+                    return;
+                }
             } else {
                 boolean error = true;
                 request.setAttribute("error", error);
                 request.getRequestDispatcher("pages/login.jsp").forward(request, response);
                 return;
             }
-        } else {
-            doGet(request, response);
         }
+        doGet(request, response);
     }
 
     @Override

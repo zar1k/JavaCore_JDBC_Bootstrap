@@ -82,7 +82,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2">Username</label>
-                                        <label class="col-sm-10">${tmpUser.login}</label>
+                                        <p class="col-sm-10 form-control-static">${tmpUser.login}</p>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="col-sm-2 control-label">Password</label>

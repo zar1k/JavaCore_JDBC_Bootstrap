@@ -40,11 +40,11 @@ public class AuthFilter implements Filter {
 
         if (user != null) {
             chain.doFilter(request, response);
+            return;
         }
         resp.sendRedirect("login");
     }
 
     public void destroy() {
     }
-
 }

@@ -19,9 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
-import java.util.*;
 import java.util.List;
 
 /**
@@ -49,10 +47,12 @@ public class CreateServlet extends HttpServlet {
         String zipCode = request.getParameter("zipCode");
         String[] musicTypes = request.getParameterValues("listMusics");
 
-//        if (userService.getByLogin(login).get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()) != null) {
-//            request.getRequestDispatcher("create").forward(request, response);
-//            return;
-//        }
+        if (!userService.getByLogin(login).isEmpty()) {
+            boolean loginIsUsed = true;
+            request.setAttribute("loginIsUsed", loginIsUsed);
+            doGet(request, response);
+            return;
+        }
 
         user.setLogin(login);
         user.setPassword(password);

@@ -12,8 +12,8 @@ import java.util.List;
 public class LoginService {
     public boolean authenticate(String login, String password) {
         boolean userExists;
-        IUserService userImpl = new UserServiceImpl();
-        List<User> users = userImpl.getByLoginAndPassword(login, password);
+        IUserService userService = new UserServiceImpl();
+        List<User> users = userService.getByLoginAndPassword(login, password);
         if (users.isEmpty()) {
             userExists = false;
         } else {
@@ -23,8 +23,8 @@ public class LoginService {
     }
 
     public User getUser(String login) {
-        IUserService userImpl = new UserServiceImpl();
-        List<User> users = userImpl.getByLogin(login);
+        IUserService userService = new UserServiceImpl();
+        List<User> users = userService.getByLogin(login);
         User user = users.get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber());
         return user;
     }

@@ -83,6 +83,11 @@
                                     <div class="form-group">
                                         <label for="username" class="col-sm-2 control-label">Username</label>
                                         <div class="col-sm-10">
+                                            <c:if test="${loginIsUsed}">
+                                                <div class="alert alert-danger text-center" role="alert">This username is already
+                                                    taken
+                                                </div>
+                                            </c:if>
                                             <input type="text" class="form-control" id="username" name="login"
                                                    placeholder="user100">
                                         </div>
@@ -157,8 +162,8 @@
                                     <div class="form-group">
                                         <label for="zipCode" class="col-sm-2 control-label">ZIP Code</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="zipCode" name="zipCode"
-                                                   placeholder="000000">
+                                            <input type="text" min="01000" max="99999" class="form-control" id="zipCode" name="zipCode"
+                                                   placeholder="61000">
                                         </div>
                                     </div>
                                     <br>

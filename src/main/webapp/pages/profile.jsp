@@ -50,10 +50,10 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="dashboard"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
+                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="panel"><i class="fa fa-tachometer" aria-hidden="true"></i> Control Panel</a>
+                        <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i> Control Panel</a>
                     </li>
                 </ul>
             </div>
