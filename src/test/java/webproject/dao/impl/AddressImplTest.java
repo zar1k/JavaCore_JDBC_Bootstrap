@@ -2,16 +2,12 @@ package webproject.dao.impl;
 
 import org.junit.Test;
 import webproject.models.Address;
-import webproject.models.Model;
 import webproject.models.User;
 import webproject.services.IAddressService;
-import webproject.services.LoginService;
+import webproject.services.impl.LoginService;
 import webproject.services.impl.AddressServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Andrew Zarazka on 04.05.2017.

@@ -24,10 +24,6 @@ import java.util.List;
  */
 @WebServlet(urlPatterns = "/panel", name = "ControlPanelServlet")
 public class ControlPanelServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IUserService userService = new UserServiceImpl();
         IRoleService roleService = new RoleServiceImpl();

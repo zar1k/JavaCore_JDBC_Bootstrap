@@ -1,8 +1,5 @@
 package webproject.controlers;
 
-import webproject.models.User;
-import webproject.services.LoginService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +12,6 @@ import java.io.IOException;
  */
 @WebServlet(urlPatterns = "/profile", name = "ProfileServlet")
 public class ProfileServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("pages/profile.jsp").forward(request, response);
     }

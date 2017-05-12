@@ -1,7 +1,8 @@
 package webproject.controlers;
 
 import webproject.models.User;
-import webproject.services.LoginService;
+import webproject.services.ILoginService;
+import webproject.services.impl.LoginService;
 import webproject.utils.Numbers;
 
 import javax.servlet.ServletException;
@@ -20,10 +21,10 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        LoginService loginService = new LoginService();
-        boolean result = loginService.authenticate(login, password);
-
         if (request.getParameter("loginBtn") != null) {
+            ILoginService loginService = new LoginService();
+            boolean result = loginService.authenticate(login, password);
+
             if (result) {
                 User user = loginService.getUser(login);
                 request.getSession().setAttribute("user", user);

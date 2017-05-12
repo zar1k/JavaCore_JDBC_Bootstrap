@@ -1,6 +1,8 @@
-package webproject.services;
+package webproject.services.impl;
 
 import webproject.models.User;
+import webproject.services.ILoginService;
+import webproject.services.IUserService;
 import webproject.services.impl.UserServiceImpl;
 import webproject.utils.Numbers;
 
@@ -9,7 +11,8 @@ import java.util.List;
 /**
  * Created by Andrew Zarazka on 29.04.2017.
  */
-public class LoginService {
+public class LoginService implements ILoginService {
+    @Override
     public boolean authenticate(String login, String password) {
         boolean userExists;
         IUserService userService = new UserServiceImpl();
@@ -22,6 +25,7 @@ public class LoginService {
         return userExists;
     }
 
+    @Override
     public User getUser(String login) {
         IUserService userService = new UserServiceImpl();
         List<User> users = userService.getByLogin(login);

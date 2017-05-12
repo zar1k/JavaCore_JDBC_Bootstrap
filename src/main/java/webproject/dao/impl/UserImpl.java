@@ -7,13 +7,18 @@ import webproject.templates.UserTemplate;
 import webproject.dao.IUser;
 import webproject.models.User;
 import webproject.utils.DataSource;
+import webproject.utils.Numbers;
 
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 /**
  * Created by Andrew Zarazka on 28.04.2017.
  */
 public class UserImpl implements IUser {
+    private static Logger logger = Logger.getLogger(UserImpl.class.getName());
+
     private static final String GET_ALL = "SELECT * FROM test_db.users";
     private static final String GET_BY_ID = "SELECT id, login, password, first_name, last_name, age, role_id, address_id FROM test_db.users WHERE id = ?";
     private static final String GET_BY_LOGIN = "SELECT id, login, password, first_name, last_name, age, role_id, address_id FROM test_db.users WHERE login = ?";
@@ -32,13 +37,20 @@ public class UserImpl implements IUser {
     @Override
     public List<User> getAll() {
         Template template = new UserTemplate();
-        return template.executeAndReturn(instance, GET_ALL);
+        List<User> users = template.executeAndReturn(instance, GET_ALL);
+
+        for (User user : users) {
+            logger.info("User list: " + user);
+        }
+        return users;
     }
 
     @Override
     public List<User> getById(int id) {
         Template template = new UserTemplate();
-        return template.executeAndReturn(instance, GET_BY_ID, id);
+        List<User> users = template.executeAndReturn(instance, GET_BY_ID, id);
+        logger.info("User uploaded successfully. User details: " + users.get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
+        return users;
     }
 
     @Override
@@ -47,6 +59,7 @@ public class UserImpl implements IUser {
         int addressId = template.getNextAutoIncrement(instance, GET_NEXT_AUTO_INCREMENT);
         template.execute(instance, CREATE, user.getLogin().trim(), user.getPassword().trim(), user.getFirstName().trim(),
                 user.getLastName().trim(), user.getAge(), user.getRole().getId(), addressId);
+        logger.info("User successfully created. User details: " + user);
     }
 
     @Override
@@ -54,41 +67,59 @@ public class UserImpl implements IUser {
         Template template = new UserTemplate();
         template.execute(instance, UPDATE, user.getPassword().trim(), user.getFirstName().trim(),
                 user.getLastName().trim(), user.getAge(), user.getRole().getId(), user.getId(), user.getId());
+        logger.info("User updated successfully. User details: " + user);
     }
 
     @Override
     public void delete(int id) {
         Template template = new UserTemplate();
         template.execute(instance, DELETE, id);
+        logger.info("User successfully deleted. User ID: " + id);
     }
 
     @Override
     public List<User> getByLogin(String login) {
         Template template = new UserTemplate();
-        return template.executeAndReturn(instance, GET_BY_LOGIN, login.trim());
+        List<User> users = template.executeAndReturn(instance, GET_BY_LOGIN, login.trim());
+        if (users.isEmpty()) {
+            logger.info("User is not found. User login: " + login);
+        }
+        logger.info("User successfully found by login. User login: " + login);
+        return users;
     }
 
     @Override
     public List<User> getByLoginAndPassword(String login, String password) {
         Template template = new UserTemplate();
-        return template.executeAndReturn(instance, GET_BY_LOGIN_AND_PASSWORD, login.trim(), password.trim());
+        List<User> users = template.executeAndReturn(instance, GET_BY_LOGIN_AND_PASSWORD, login.trim(), password.trim());
+        if (users.isEmpty()) {
+            logger.trace("User is not found. User login: " + login + " and password: " + password);
+        }
+        logger.info("User successfully found by login and password. User details: " + users.get(Numbers.FIRST_ELEMENT_OF_LIST.getNumber()));
+        return users;
     }
 
     @Override
     public void addUserMusicTypes(User user, MusicType musicType) {
         Template template = new UserTemplate();
         template.execute(instance, ADD_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim(), musicType.getName().trim());
+        logger.info("User Music successfully Added. User details: " + user + " .Music details: " + musicType);
     }
 
     @Override
     public List<MusicType> getUserMusicTypes(User user) {
         Template template = new MusicTypeTemplate();
-        return template.executeAndReturn(instance, GET_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim());
+        List<MusicType> musicTypes = template.executeAndReturn(instance, GET_LINK_USER_HAS_MUSIC_TYPE, user.getLogin().trim());
+        for (MusicType type : musicTypes) {
+            logger.info("The user's music was successfully uploaded. User details: " + user + " .Music list: " + type);
+        }
+        return musicTypes;
     }
 
     @Override
     public void deleteUserMusicTypes(User user) {
         Template template = new UserTemplate();
         template.execute(instance, DELETE_LINK_USER_HAS_MUSIC_TYPE, user.getId());
+        logger.info("User Music successfully deleted. User details: " + user);
     }
 }
