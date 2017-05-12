@@ -21,8 +21,6 @@
     <link href="../resources/my-theme.css" rel="stylesheet" type="text/css">
     <!-- Font Awesome -->
     <link href="../resources/vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <!-- DataTables CSS -->
-    <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,36 +65,38 @@
             <div class="col-lg-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        О задании
+                        Описание задачи
                     </div>
                     <div class="panel-body">
                         <div class="col-lg-6">
-                            <h3>Тема JSP Database Access с применением паттерна DAO</h3>
-                            <p>Реализовать <strong>DAO</strong> для каждой из сущностей, в которых должны находится
-                                <strong>CRUD</strong>
-                                операции (создать,
-                                выбрать все сущности, выбор сущности по id, редактировать сущность, удалить
-                                сущность).
-                            </p>
-                            <p>Добавить web с возможностью входа под этими ролями. </p>
+                            <h3>Работа с JDBC и JSP</h3>
                             <p>Существуют 4 сущности:</p>
                             <ul>
-                                <li>User;</li>
-                                <li>Address;</li>
-                                <li>Role;</li>
-                                <li>MusicType.</li>
+                                <li>User</li>
+                                <li>Address</li>
+                                <li>Role</li>
+                                <li>MusicType</li>
                             </ul>
                             <p>Таблицы и связи между таблицами:</p>
                             <ul>
-                                <li>Role : User(1:M);</li>
-                                <li>User : Address(1:1);</li>
-                                <li>User : MusicType (M:M).</li>
+                                <li>Role : User(1:M)</li>
+                                <li>User : Address(1:1)</li>
+                                <li>User : MusicType (M:M)</li>
                             </ul>
                             <p>Таблицы <strong>Role</strong> и <strong>MusicType</strong> заполнены: (<strong>USER,
-                                MANDATOR, ADMIN</strong>) и (<strong>RAP, ROCK …</strong>).</p>
-                            <blockquote>
-                                <p>Не использовать фреймворки Spring и Hibernate</p>
-                            </blockquote>
+                                MODERATOR, ADMIN</strong>) и (<strong>RAP, ROCK …</strong>).</p>
+                            <p>Реализовать <strong>CRUD</strong> для каждой из сущностей.</p>
+                            <p>Добавить с возможностью входа под ролями.</p>
+                            <p>Используемые технологии и библиотеки</p>
+                            <ul>
+                                <li>c3p0 0.9.5.2</li>
+                                <li>mysql-connector-java 5.1.40</li>
+                                <li>log4j 1.2.17</li>
+                                <li>javax.servlet-api 3.1.0</li>
+                                <li>jstl 1.2</li>
+                                <li>taglibs 1.1.2</li>
+                                <li>Java 1.8</li>
+                            </ul>
                         </div>
                         <div class="col-lg-6">
                             <img class="img-responsive" alt="Диаграмма классов MySQL"
@@ -131,10 +131,5 @@
 <script src="../resources/vendor/jquery/jquery-3.2.1.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../resources/vendor/bootstrap/js/bootstrap.js"></script>
-<!-- DataTables JavaScript -->
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-<!-- Custom JS -->
-<script src="../resources/my-script.js"></script>
 </body>
 </html>

@@ -21,17 +21,4 @@ public class AddressImplTest {
             System.out.println(address);
         }
     }
-
-    @Test
-    public void Arr() throws Exception {
-        String[] mass = {"a", "b", "c"};
-        for (int i = 0; i < mass.length; i++) {
-            System.out.println(mass[i]);
-        }
-        String login = "user";
-        LoginService loginService = new LoginService();
-        User user = loginService.getUser(login);
-        System.out.println(user);
-
-    }
 }
