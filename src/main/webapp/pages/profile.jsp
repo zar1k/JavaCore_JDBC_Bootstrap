@@ -108,23 +108,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Обзор программы
-                    </div>
-                    <div class="panel-body">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"
-                                    src="../resources/file/video/video_review.mp4"></iframe>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <!-- jQuery -->
